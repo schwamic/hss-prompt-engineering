@@ -27,5 +27,6 @@ Michael Schwarz, #2141622, MIN, <michael.schwarz@hs-augsburg.de>
 
 ## OpenAI
 
-- Generate API-KEY: https://platform.openai.com/api-keys
+- API-KEY: https://platform.openai.com/api-keys
 - Upload Files: https://platform.openai.com/docs/api-reference/files
+- Tokens: https://openai.com/pricing
