@@ -1,0 +1,52 @@
+guc1_schwerpunktgruppen_beispiele = """
+Bearbeite folgende Aufgabe Schritt für Schritt und generiere deine fertige Analyse lückenlos im JSON Format mit folgender Struktur:
+{
+    "Datei": <Dateiname>,
+    "1,2,3": [{<Kategorie>: [{<Leitfrage Nummer>: <Anzahl>}]}]
+}
+1. Gruppiere die Leitfragen aus der Spalte "Leitfrage" nach der zugehörigen Kategorie in der Spalte "Kategorie" und update entsprechend das JSON.
+2. Zähle wie häufig die jeweiligen Leitfragen pro Kategorie beantwortet wurden und update entsprechend das JSON.
+3. Sortiere die Einträge absteigend nach Häufigkeit und update entsprechend das JSON.
+
+4. Beschreibe wichtige Erkentnisse der Analyse in 1-2 Sätzen.
+5. Gebe in 1 Satz an wie ich das Prompt optimieren kann.
+
+---
+
+Bearbeite nun weitere Aufgaben Schritt für Schritt:
+1. Analysiere die Beispiele bestehend aus den Spalten "Titel des Beispiels", "1) Beschreibe Dein konkretes Beispiel.", "2) Was läuft gut oder schlecht?", "3) Woran liegt es, dass es so läuft?".
+2. Extrahiere thematische Schwerpunkte zu jedem Beispiel.
+3. Gruppiere Beispiele anhand thematischer Schwerpunkte.
+4. Beschreibe jede Gruppe in einem Satz.
+4. Beschreibe wichtige Erkentnisse der Analyse in 2-3 Sätzen.
+5. Gebe in 1 Satz an wie ich das Prompt optimieren kann.
+
+Generiere deine vollständige Antwort lückenlos als JSON mit folgender Struktur:
+{
+    "Datei": <Dateiname>,
+    <Gruppe>: [{"Beschreibung": <Beschreibung der Gruppe>, "Beispiele": [<Indize der Zeile des Beispiels in der Tabelle>]}]
+}
+
+Gliederung des Outputs:
+- Ergebnis der Analyse im JSON Format
+- Wichtige Erkentnisse
+- Prompt Optimierung
+"""
+
+---
+
+# <TODO: Hier funktioniert noch was nicht...!, ggf. aber auch nicht wichtig? -> key insights>
+guc1_verteilung_beispiele = """
+Bearbeite nun weitere Aufgaben Schritt für Schritt:
+1. Analysiere die Beispiele bestehend aus den Spalten "Titel des Beispiels" und "1) Beschreibe Dein konkretes Beispiel." in 1-2 Sätzen.
+2. Zwischenschritt: Gruppiere die Beispiele nach ihren inhaltlichen Schwerpunkten. Fokusiere dich dabei auf die Informationen in den Spalten der Beispiele.
+3. Zwischenschritt: Beschreibe jede Gruppe mit 1 Satz und leite einen Titel ab.
+4. Zwischenschritt: Zähle die Beispiele jeder Gruppe.
+5. Generiere deine vollständige Analyse lückenlos als JSON mit folgender Struktur:
+{
+    "Datei": <Dateiname>,
+    "4": [{<Gruppen-Titel>:<Gruppen-Beschreibung>, "Anzahl": <Anzahl der Beispiele in der Gruppe> }]
+}
+6. Begründe deine Analyse in 2-3 Sätzen.
+7. Gebe in 1 Satz an wie ich das Prompt optimieren kann.
+"""
