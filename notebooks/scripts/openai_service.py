@@ -5,6 +5,10 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
 
+# TODO
+# upload file via UI
+# question regarding file
+# limit tokens: response length (system)
 
 class OpenAIService:
     def __init__(self):
@@ -62,8 +66,3 @@ class OpenAIService:
         print(response.usage)
         return response.choices[0].message.content
 
-
-# TODO
-# upload file via UI
-# question regarding file
-# !!! limit tokens -> response length !!! (system)
