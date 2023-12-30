@@ -50,3 +50,270 @@ Bearbeite nun weitere Aufgaben Schritt für Schritt:
 6. Begründe deine Analyse in 2-3 Sätzen.
 7. Gebe in 1 Satz an wie ich das Prompt optimieren kann.
 """
+
+guc2_key_insights_OLD_C = """
+Deine Aufgabe besteht darin sogenannte Insights zu erstellen.
+
+Fokusiere dich bei der Erstellung von Insights auf die folgenden 5 Regeln:
+i) Ein Insight konzentriert sich auf konkrete Herausforderungen und konkrete Chancen.
+ii) Es ist wichtig spezifische Details und Ursachen zu benennen, um den Insight aussagekräftig zu gestalten.
+iii) Insights werden präzise und prägnant in 20-45 Wörter formuliert.
+v) Insights müssen wie folgt strukturiert sein: "<A> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <B> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <C>". <B> und <C> sind optional. 
+iv) Für einen Insight ist ausschließlich der Inhalt einer Zeile (Tupel) in den Spalten "Titel des Beispiels", "1) Beschreibe Dein konkretes Beispiel.", "2) Was läuft gut oder schlecht?", "3) Woran liegt es, dass es so läuft?" relevant.
+
+Bearbeite nun folgende Aufgabe Schritt für Schritt und generiere deine fertige Antwort im JSON Format mit folgender Struktur:
+{
+    "Tupel": <Nummer>,
+    "Insight": <Insight>
+}
+1. Erstelle einen Insight für das 2. Tupel.
+2. Was kannst du beim Erstellen von Insights verbessern? Vergleiche dazu deine Antwort mit folgender Musterlösung: {
+    "Tupel": 2,
+    "Insight": "Trotz Vorliegen des Übertritts-Zeugnisses haben Kinder aus Familien mit Migrationshintergrund eine geringere Chance auf einen Gymnasiums-Platz WEIL es im Münchner Norden zu wenig Gymnasien gibt UND Sprachbarrieren der Eltern eine Barriere bei formellen Notwendigkeiten darstellen.",
+}
+3. Erstelle einen Insight für das 3. Tupel.
+4. Was kannst du beim Erstellen von Insights verbessern? Vergleiche dazu deine Antwort mit folgender Musterlösung: {
+    "Tupel": 3,
+    "Insight": "An meiner Berufsschule gibt es die Empfehlung, 5 Minuten "Bürogymnastik" in den Unterricht zu integrieren ABER die Lehrkräfte wollen keine Unterrichtszeit dafür opfern."  
+}
+5. Ertselle einen Insight für das 4. Tupel.
+6. Was kannst du beim Erstellen von Insights verbessern? Vergleiche dazu deine Antwort mit folgender Musterlösung: {
+    "Tupel": 4,
+    "Insight": "Die Zusammenarbeit zwischen "Gesund vor Ort" (GSR) und dem lokalen Bildungsmanagement in der Gesundheitsbildung- und förderung funktioniert gut WEIL beide Seiten offen für Kooperation sind, Projekte gemeinsam finanziert, koordiniert und Expertisen gebündelt werden DESHALB steigt die Qualität der Angebote."  
+}
+7. Erstelle einen Insight für das 1. Tupel.
+8. Erstelle einen Insight für das 5. Tupel.
+"""
+
+guc2_key_insights_OLD_A = """
+Deine Aufgabe besteht darin sogenannte Key-Insights zu generieren.
+- Key-Insights fassen die Antwort einer Leitfrage in Spalte "Leitfrage" auf die wichtigsten Informationen in 20-45 Wörter zusammen.
+- Die Antwort besteht aus den Spalten "Titel des Beispiels", "1) Beschreibe Dein konkretes Beispiel.", "2) Was läuft gut oder schlecht?", "3) Woran liegt es, dass es so läuft?".
+- Key-Insights sind einheitliche wie folgt struktur: "<Kernaussage A> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <Kernaussage B> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <Kernaussage C>".
+- Die <Kernaussage B> und <Kernaussage C> sind optional. Wird zum Beispiel auf <Kernaussage C> verzichtet sieht die Struktur wie folgt aus: "<Kernaussage A> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <Kernaussage B>".
+
+Bearbeite die Aufgabe Schritt für Schritt und fokusiere dich pro Key-Insight auf den dazugehörigen Inhalt einer Zeile.
+Beispiel zur Erstellung der Key-Insights für die Antworten in Zeile 2,3 und 4:
+{
+    "Zeile 2": {
+        "Titel des Beispiels":"fehlende Vorkurs Deutsch Plätze",
+        "1) Beschreibe Dein konkretes Beispiel.":"Ergebnis einer Befragung im Rahmen der Wirkungsorientierten Steuerung der Münchner Förderformel bzw. des Standortfaktors: vor allem Einrichtungen mit Standortfaktor (in belasteten Stadtteilen) erhalten weniger Vorkurs-Plätze als sie Bedarf hätten - Kinder, die die Förderungen bräuchten erhalten keinen Zugang.",
+        "2) Was läuft gut oder schlecht?":"Positiv: Bereitschaft der Einrichtung an Befragung teilzunehmen Negativ: Gründe, warum weniger Kinder zum Vorkurs gemeldet werden als Bedarf hätten sind noch unklar und müssen herausgefunden werden. Hol und Bringsituation liegt (meist) bei den Eltern -> wie können diese weiter unterstützt werden, damit die Hol und Bringsituation zum Vorkurs kein Hindernis mehr zur Teilnahme ist?",
+        "3) Woran liegt es, dass es so läuft?":"Den Moment erlebe ich nur in Zahlen in Form der Ergebnisse der Befragung. Was ich brauche sind Ressourcen, um die Erhebung fortzuführen und noch offene Fragestellungen klären zu können. Ändern müsste sich der Fachkräftemangel bzgl. des Vorkurses sowie die Sicherstellung der Hol- und Bringsituation sodass die Kinder die sprachliche Bildung erhalten, die in alle späteren Bereiche mit einwirkt.",
+        "Key-Insight": "Besonders in Stadtteilen in denen Kinder ein höheres Maß an sprachlicher Förderung benötigen bleibt diesen der Zugang oft verwährt WEIL es unter anderem auch stark vom Einsatz der Eltern abhängt UND diese brauchen aber mehr Unterstützung."
+    },
+    "Zeile 3": {
+        "Titel des Beispiels":"Bildungsgerechtigkeit / Chancengleichheit",
+        "1) Beschreibe Dein konkretes Beispiel.":"Es geht um den Übertritt der Schüler aus der 4. GS-Klasse in eine weiterführende Schule, vorrangig in ein Gymnasium im 24. Stadtbezirk. Trotz Vorliegen des Übertritts-Zeugnisses werden diese Kinder bfehlende Vorkurs Deutsch Plätzeenachteiligt, sie müssen einen längeren Schulweg in ein Gymnasium außerhalb des Stadtbezirks in Kauf nehmen. Oder wählen dann als "Ausweg" einen Übertritt in eine Realschulefehlende Vorkurs Deutsch Plätze",
+        "2) Was läuft gut oder schlecht?":"Kinder aus Famlien mit Migrationshintergrund haben eine geringere Chance auf einen Platz in einem Gymnasium. Chancengleichheit ist oft davon abhängig, in welches Elternhaus ein Kind geboren wird. Das darf nicht sein. Die soziale Herkunft darf kein Nachteil für KInder sein, das Wohnviertel keine Rolle spielen.",
+        "3) Woran liegt es, dass es so läuft?":"Es gibt im Münchner Norden zu wenig Gymnasien. Eltern, die der dt. Sprache nicht so mächtig sind haben Probleme die formellen Notwendigkeiten zu erledigen. Der Neubau von Schulen erfolgt viel zu langsam. Anhand der Bauvorhaben im Wohnunsgsbau ist der Zuwachs der Einwohner und damit der Bedarf an Schulen zu berücksichtigen und zu realisieren.",
+        "Key-Insight": "Trotz Vorliegen des Übertritts-Zeugnisses haben Kinder aus Familien mit Migrationshintergrund eine geringere Chance auf einen Gymnasiums-Platz WEIL es im Münchner Norden zu wenig Gymnasien gibt UND Sprachbarrieren der Eltern eine Barriere bei formellen Notwendigkeiten darstellen."
+    },
+    "Zeile 4": {
+        "Titel des Beispiels":"Sport zur Gesundheitserhaltung und gesunde Ernährung",
+        "1) Beschreibe Dein konkretes Beispiel.":"Es gibt die Angebote von Obst in der Mensa und auch die Empfehlung von sog. Bürogymnastik für ca. 5 Minuten am Tag im Unterricht.",
+        "2) Was läuft gut oder schlecht?":"Gut: es gibt überhaupt Obst und die Idee von Bürogymnastik schlecht: zu wenig im Bewusstsein der Schüler, Lehrer wollen nichtr darauf aufmerksam machen bzw. keine Unterrichtszeit "opfern".",
+        "3) Woran liegt es, dass es so läuft?": "Obst ist nicht kostenlos, zu wenig zugänglich Bürogymnastik wird nicht vermittelt/praktiziertm siehe links, Lehrer wollen keine Unterrichtszeit opfern, haben keine Zusicherung, dass es nicht zu ihrem Nachteil ist.",
+        "Key-Insight": "An meiner Berufsschule gibt es die Empfehlung, 5 Minuten "Bürogymnastik" in den Unterricht zu integrieren ABER die Lehrkräfte wollen keine Unterrichtszeit dafür opfern."
+    }
+}
+1. Erstelle einen Key-Insight für die Antwort in Zeile 5.
+2. Erstelle einen Key-Insight für die Antwort in Zeile 6.
+3. Gebe in 1 Satz an wie ich das Prompt optimieren kann.
+"""
+
+# GPT:
+# ## Key-Insight für die Antwort in Zeile 5:
+# In der Verbesserung der Informationsweitergabe von Beratungsangeboten besteht Handlungsbedarf, 
+# WEIL oftmals Informationen nicht alle Schüler*innen erreichen
+# UND dadurch Chancengleichheit beeinträchtigt wird.
+#
+# ## Key-Insight für die Antwort in Zeile 6:
+# Das 'Münchner Haus der Schüler*innen' fördert aktive Partizipation und Engagement junger Erwachsener,
+# ABER es bedarf einer breiteren Anerkennung und Unterstützung, um seine volle Wirkung zu entfalten.
+#
+# ## Optimierungsvorschlag für das Prompt:
+# Definiere klar, welche Informationen aus den Antworten genutzt werden sollen, um die Key-Insights zu erstellen.
+# Ein Beispiel oder eine Vorlage für die Struktur der Key-Insights kann hilfreich sein.
+
+# USER: 
+# Erstelle weitere Key-Insights für die Antwort in Zeile 7, 8 und 9.
+
+# GPT:
+# ## Key-Insight für die Antwort in Zeile 7:
+# Gesundheitsthemen sind im Lehrplan verankert,
+# ABER ihr Erfolg hängt stark vom Engagement der Lehrkräfte und der Schulleitung ab,
+# DESWEGEN variiert die Umsetzung stark.
+# 
+# ## Key-Insight für die Antwort in Zeile 8:
+# Die Verbindung von Theorie und Praxis in der Bildungsgerechtigkeit wird durch Projekte wie den 'Kochwagen' gefördert,
+# WEIL großes Engagement der Verantwortlichen besteht, ABER es bedarf kontinuierlicher Ressourcen und Unterstützung.
+# 
+# ## Key-Insight für die Antwort in Zeile 9:
+# Diskriminierung in Mittelschulen wird oft übersehen,
+# WEIL zu wenig Aufklärung und zu großer Einfluss von Vorurteilen bestehen,
+# DESWEGEN müssen gezielte Aufklärungsmaßnahmen eingeführt werden.
+
+guc2_key_insights_OLD_B = """
+Deine Aufgabe besteht darin sogenannte Insights zu erstellen.
+
+Fokusiere dich bei der Erstellung der Insights darauf, dass dein Ergebnis die folgenden 3 Regeln einhält:
+i) Ein Insight extrahiert relevante Herausforderungen und Chancen aus dem Inhalt einer Zeile in den Spalten "Titel des Beispiels", "1) Beschreibe Dein konkretes Beispiel.", "2) Was läuft gut oder schlecht?", "3) Woran liegt es, dass es so läuft?" zu einer Kernaussage in 20-45 Wörter.
+ii) Konkrete Bezeichnungen wie zum Beispiel Ort und Name müssen in dem Insight enthalten sein. 
+iii) Insights müssen einheitlich wie folgt strukturiert sein: "<A> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <B> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <C>". <B> und <C> sind optional. 
+
+Hier wurden bereits 2 Insights auf Basis der Regeln und Daten aus Zeile 2 und 4 erstellt:
+{
+    "Aufgabe": "Erstelle einen Insight für Zeile 2",
+    "Antwort": {
+        "Datei": <Dateiname>,
+        "Zeile": 2,
+        "Insight": "Besonders in Stadtteilen in denen Kinder ein höheres Maß an sprachlicher Förderung benötigen bleibt diesen der Zugang oft verwährt WEIL es unter anderem auch stark vom Einsatz der Eltern abhängt UND diese brauchen aber mehr Unterstützung."  
+    },
+    "Aufgabe": "Erstelle einen Insight für Zeile 4",
+    "Antwort": {
+        "Datei": <Dateiname>,
+        "Zeile": 4,
+        "Insight": "An meiner Berufsschule gibt es die Empfehlung, 5 Minuten "Bürogymnastik" in den Unterricht zu integrieren ABER die Lehrkräfte wollen keine Unterrichtszeit dafür opfern."
+    },
+}
+
+Bearbeite nun folgende Aufgabe Schritt für Schritt:
+1. Erstelle einen Insight für Zeile 8
+2. Gebe in 1 Satz an wie ich das Prompt optimieren kann.
+"""
+
+--------
+--------
+
+guc2_key_insights_OLD_C = """
+Deine Aufgabe besteht darin sogenannte Insights zu erstellen.
+
+Fokusiere dich bei der Erstellung von Insights auf die folgenden 5 Regeln:
+i) Ein Insight konzentriert sich auf konkrete Herausforderungen und konkrete Chancen.
+ii) Es ist wichtig spezifische Details und Ursachen zu benennen, um den Insight aussagekräftig zu gestalten.
+iii) Insights werden präzise und prägnant in 20-45 Wörter formuliert.
+v) Insights müssen wie folgt strukturiert sein: "<A> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <B> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <C>". <B> und <C> sind optional. 
+iv) Für einen Insight ist ausschließlich der Inhalt einer Zeile (Tupel) in den Spalten "Titel des Beispiels", "1) Beschreibe Dein konkretes Beispiel.", "2) Was läuft gut oder schlecht?", "3) Woran liegt es, dass es so läuft?" relevant.
+
+Bearbeite nun folgende Aufgabe Schritt für Schritt und generiere deine fertige Antwort im JSON Format mit folgender Struktur:
+{
+    "Tupel": <Nummer>,
+    "Insight": <Insight>
+}
+1. Erstelle einen Insight für das 2. Tupel.
+2. Was kannst du beim Erstellen von Insights verbessern? Vergleiche dazu deine Antwort mit folgender Musterlösung: {
+    "Tupel": 2,
+    "Insight": "Trotz Vorliegen des Übertritts-Zeugnisses haben Kinder aus Familien mit Migrationshintergrund eine geringere Chance auf einen Gymnasiums-Platz WEIL es im Münchner Norden zu wenig Gymnasien gibt UND Sprachbarrieren der Eltern eine Barriere bei formellen Notwendigkeiten darstellen.",
+}
+3. Erstelle einen Insight für das 3. Tupel.
+4. Was kannst du beim Erstellen von Insights verbessern? Vergleiche dazu deine Antwort mit folgender Musterlösung: {
+    "Tupel": 3,
+    "Insight": "An meiner Berufsschule gibt es die Empfehlung, 5 Minuten "Bürogymnastik" in den Unterricht zu integrieren ABER die Lehrkräfte wollen keine Unterrichtszeit dafür opfern."  
+}
+5. Ertselle einen Insight für das 4. Tupel.
+6. Was kannst du beim Erstellen von Insights verbessern? Vergleiche dazu deine Antwort mit folgender Musterlösung: {
+    "Tupel": 4,
+    "Insight": "Die Zusammenarbeit zwischen "Gesund vor Ort" (GSR) und dem lokalen Bildungsmanagement in der Gesundheitsbildung- und förderung funktioniert gut WEIL beide Seiten offen für Kooperation sind, Projekte gemeinsam finanziert, koordiniert und Expertisen gebündelt werden DESHALB steigt die Qualität der Angebote."  
+}
+7. Erstelle einen Insight für das 1. Tupel.
+8. Erstelle einen Insight für das 5. Tupel.
+"""
+
+guc2_key_insights_OLD_A = """
+Deine Aufgabe besteht darin sogenannte Key-Insights zu generieren.
+- Key-Insights fassen die Antwort einer Leitfrage in Spalte "Leitfrage" auf die wichtigsten Informationen in 20-45 Wörter zusammen.
+- Die Antwort besteht aus den Spalten "Titel des Beispiels", "1) Beschreibe Dein konkretes Beispiel.", "2) Was läuft gut oder schlecht?", "3) Woran liegt es, dass es so läuft?".
+- Key-Insights sind einheitliche wie folgt struktur: "<Kernaussage A> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <Kernaussage B> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <Kernaussage C>".
+- Die <Kernaussage B> und <Kernaussage C> sind optional. Wird zum Beispiel auf <Kernaussage C> verzichtet sieht die Struktur wie folgt aus: "<Kernaussage A> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <Kernaussage B>".
+
+Bearbeite die Aufgabe Schritt für Schritt und fokusiere dich pro Key-Insight auf den dazugehörigen Inhalt einer Zeile.
+Beispiel zur Erstellung der Key-Insights für die Antworten in Zeile 2,3 und 4:
+{
+    "Zeile 2": {
+        "Titel des Beispiels":"fehlende Vorkurs Deutsch Plätze",
+        "1) Beschreibe Dein konkretes Beispiel.":"Ergebnis einer Befragung im Rahmen der Wirkungsorientierten Steuerung der Münchner Förderformel bzw. des Standortfaktors: vor allem Einrichtungen mit Standortfaktor (in belasteten Stadtteilen) erhalten weniger Vorkurs-Plätze als sie Bedarf hätten - Kinder, die die Förderungen bräuchten erhalten keinen Zugang.",
+        "2) Was läuft gut oder schlecht?":"Positiv: Bereitschaft der Einrichtung an Befragung teilzunehmen Negativ: Gründe, warum weniger Kinder zum Vorkurs gemeldet werden als Bedarf hätten sind noch unklar und müssen herausgefunden werden. Hol und Bringsituation liegt (meist) bei den Eltern -> wie können diese weiter unterstützt werden, damit die Hol und Bringsituation zum Vorkurs kein Hindernis mehr zur Teilnahme ist?",
+        "3) Woran liegt es, dass es so läuft?":"Den Moment erlebe ich nur in Zahlen in Form der Ergebnisse der Befragung. Was ich brauche sind Ressourcen, um die Erhebung fortzuführen und noch offene Fragestellungen klären zu können. Ändern müsste sich der Fachkräftemangel bzgl. des Vorkurses sowie die Sicherstellung der Hol- und Bringsituation sodass die Kinder die sprachliche Bildung erhalten, die in alle späteren Bereiche mit einwirkt.",
+        "Key-Insight": "Besonders in Stadtteilen in denen Kinder ein höheres Maß an sprachlicher Förderung benötigen bleibt diesen der Zugang oft verwährt WEIL es unter anderem auch stark vom Einsatz der Eltern abhängt UND diese brauchen aber mehr Unterstützung."
+    },
+    "Zeile 3": {
+        "Titel des Beispiels":"Bildungsgerechtigkeit / Chancengleichheit",
+        "1) Beschreibe Dein konkretes Beispiel.":"Es geht um den Übertritt der Schüler aus der 4. GS-Klasse in eine weiterführende Schule, vorrangig in ein Gymnasium im 24. Stadtbezirk. Trotz Vorliegen des Übertritts-Zeugnisses werden diese Kinder bfehlende Vorkurs Deutsch Plätzeenachteiligt, sie müssen einen längeren Schulweg in ein Gymnasium außerhalb des Stadtbezirks in Kauf nehmen. Oder wählen dann als "Ausweg" einen Übertritt in eine Realschulefehlende Vorkurs Deutsch Plätze",
+        "2) Was läuft gut oder schlecht?":"Kinder aus Famlien mit Migrationshintergrund haben eine geringere Chance auf einen Platz in einem Gymnasium. Chancengleichheit ist oft davon abhängig, in welches Elternhaus ein Kind geboren wird. Das darf nicht sein. Die soziale Herkunft darf kein Nachteil für KInder sein, das Wohnviertel keine Rolle spielen.",
+        "3) Woran liegt es, dass es so läuft?":"Es gibt im Münchner Norden zu wenig Gymnasien. Eltern, die der dt. Sprache nicht so mächtig sind haben Probleme die formellen Notwendigkeiten zu erledigen. Der Neubau von Schulen erfolgt viel zu langsam. Anhand der Bauvorhaben im Wohnunsgsbau ist der Zuwachs der Einwohner und damit der Bedarf an Schulen zu berücksichtigen und zu realisieren.",
+        "Key-Insight": "Trotz Vorliegen des Übertritts-Zeugnisses haben Kinder aus Familien mit Migrationshintergrund eine geringere Chance auf einen Gymnasiums-Platz WEIL es im Münchner Norden zu wenig Gymnasien gibt UND Sprachbarrieren der Eltern eine Barriere bei formellen Notwendigkeiten darstellen."
+    },
+    "Zeile 4": {
+        "Titel des Beispiels":"Sport zur Gesundheitserhaltung und gesunde Ernährung",
+        "1) Beschreibe Dein konkretes Beispiel.":"Es gibt die Angebote von Obst in der Mensa und auch die Empfehlung von sog. Bürogymnastik für ca. 5 Minuten am Tag im Unterricht.",
+        "2) Was läuft gut oder schlecht?":"Gut: es gibt überhaupt Obst und die Idee von Bürogymnastik schlecht: zu wenig im Bewusstsein der Schüler, Lehrer wollen nichtr darauf aufmerksam machen bzw. keine Unterrichtszeit "opfern".",
+        "3) Woran liegt es, dass es so läuft?": "Obst ist nicht kostenlos, zu wenig zugänglich Bürogymnastik wird nicht vermittelt/praktiziertm siehe links, Lehrer wollen keine Unterrichtszeit opfern, haben keine Zusicherung, dass es nicht zu ihrem Nachteil ist.",
+        "Key-Insight": "An meiner Berufsschule gibt es die Empfehlung, 5 Minuten "Bürogymnastik" in den Unterricht zu integrieren ABER die Lehrkräfte wollen keine Unterrichtszeit dafür opfern."
+    }
+}
+1. Erstelle einen Key-Insight für die Antwort in Zeile 5.
+2. Erstelle einen Key-Insight für die Antwort in Zeile 6.
+3. Gebe in 1 Satz an wie ich das Prompt optimieren kann.
+"""
+
+# GPT:
+# ## Key-Insight für die Antwort in Zeile 5:
+# In der Verbesserung der Informationsweitergabe von Beratungsangeboten besteht Handlungsbedarf, 
+# WEIL oftmals Informationen nicht alle Schüler*innen erreichen
+# UND dadurch Chancengleichheit beeinträchtigt wird.
+#
+# ## Key-Insight für die Antwort in Zeile 6:
+# Das 'Münchner Haus der Schüler*innen' fördert aktive Partizipation und Engagement junger Erwachsener,
+# ABER es bedarf einer breiteren Anerkennung und Unterstützung, um seine volle Wirkung zu entfalten.
+#
+# ## Optimierungsvorschlag für das Prompt:
+# Definiere klar, welche Informationen aus den Antworten genutzt werden sollen, um die Key-Insights zu erstellen.
+# Ein Beispiel oder eine Vorlage für die Struktur der Key-Insights kann hilfreich sein.
+
+# USER: 
+# Erstelle weitere Key-Insights für die Antwort in Zeile 7, 8 und 9.
+
+# GPT:
+# ## Key-Insight für die Antwort in Zeile 7:
+# Gesundheitsthemen sind im Lehrplan verankert,
+# ABER ihr Erfolg hängt stark vom Engagement der Lehrkräfte und der Schulleitung ab,
+# DESWEGEN variiert die Umsetzung stark.
+# 
+# ## Key-Insight für die Antwort in Zeile 8:
+# Die Verbindung von Theorie und Praxis in der Bildungsgerechtigkeit wird durch Projekte wie den 'Kochwagen' gefördert,
+# WEIL großes Engagement der Verantwortlichen besteht, ABER es bedarf kontinuierlicher Ressourcen und Unterstützung.
+# 
+# ## Key-Insight für die Antwort in Zeile 9:
+# Diskriminierung in Mittelschulen wird oft übersehen,
+# WEIL zu wenig Aufklärung und zu großer Einfluss von Vorurteilen bestehen,
+# DESWEGEN müssen gezielte Aufklärungsmaßnahmen eingeführt werden.
+
+guc2_key_insights_OLD_B = """
+Deine Aufgabe besteht darin sogenannte Insights zu erstellen.
+
+Fokusiere dich bei der Erstellung der Insights darauf, dass dein Ergebnis die folgenden 3 Regeln einhält:
+i) Ein Insight extrahiert relevante Herausforderungen und Chancen aus dem Inhalt einer Zeile in den Spalten "Titel des Beispiels", "1) Beschreibe Dein konkretes Beispiel.", "2) Was läuft gut oder schlecht?", "3) Woran liegt es, dass es so läuft?" zu einer Kernaussage in 20-45 Wörter.
+ii) Konkrete Bezeichnungen wie zum Beispiel Ort und Name müssen in dem Insight enthalten sein. 
+iii) Insights müssen einheitlich wie folgt strukturiert sein: "<A> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <B> + [WEIL, UND, ABER, DESWEGEN, DARUM] + <C>". <B> und <C> sind optional. 
+
+Hier wurden bereits 2 Insights auf Basis der Regeln und Daten aus Zeile 2 und 4 erstellt:
+{
+    "Aufgabe": "Erstelle einen Insight für Zeile 2",
+    "Antwort": {
+        "Datei": <Dateiname>,
+        "Zeile": 2,
+        "Insight": "Besonders in Stadtteilen in denen Kinder ein höheres Maß an sprachlicher Förderung benötigen bleibt diesen der Zugang oft verwährt WEIL es unter anderem auch stark vom Einsatz der Eltern abhängt UND diese brauchen aber mehr Unterstützung."  
+    },
+    "Aufgabe": "Erstelle einen Insight für Zeile 4",
+    "Antwort": {
+        "Datei": <Dateiname>,
+        "Zeile": 4,
+        "Insight": "An meiner Berufsschule gibt es die Empfehlung, 5 Minuten "Bürogymnastik" in den Unterricht zu integrieren ABER die Lehrkräfte wollen keine Unterrichtszeit dafür opfern."
+    },
+}
+
+Bearbeite nun folgende Aufgabe Schritt für Schritt:
+1. Erstelle einen Insight für Zeile 8
+2. Gebe in 1 Satz an wie ich das Prompt optimieren kann.
+"""
