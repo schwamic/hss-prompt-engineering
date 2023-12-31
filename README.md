@@ -5,8 +5,10 @@ Fakultät für Informatik \
 Sommersemester 2024 \
 Prof. Dr. Thomas Rist
 
-In Kooperation mit: Hans Sauer Stiftung \ 
+In Kooperation mit: Hans Sauer Stiftung \
 Betreuer:innen: Conor Trawinski, Melina Oppelt und Vera Steinhauser
+
+Author: Michael Schwarz
 
 ---
 
