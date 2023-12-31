@@ -1,8 +1,9 @@
-# Angewandte Künstliche Intelligenz
+# HSS Prompt Engineering
 
 Technische Hochschule Augsburg \
 Fakultät für Informatik \
 Sommersemester 2024 \
+Angewandte Künstliche Intelligenz \
 Prof. Dr. Thomas Rist
 
 In Kooperation mit: Hans Sauer Stiftung \
