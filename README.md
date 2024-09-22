@@ -4,6 +4,10 @@ Das Stiftungsprojekt [Bildungslabor München](https://www.hanssauerstiftung.de/b
 
 In der vorliegenden Studienarbeit soll daher an konkreten Use-Cases untersucht werden, ob [ChatGPT](https://openai.com/chatgpt) (GPT-4) in der Lage ist den Prozess sinnvoll zu untersützen. Die Untersuchungen richten sich dabei explizit auf das Textverständnis der vorliegenden Dokumente aus dem Stiftungsprojekt.
 
+## Dokumente
+
+* [Insights-Ergebnisse.pdf](docs/insights-results.pdf)
+
 ## Citing
 
 ```bibtex
